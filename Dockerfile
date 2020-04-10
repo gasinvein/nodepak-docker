@@ -38,7 +38,9 @@ RUN cd /var/tmp/build/ && \
     make install && \
     strip /usr/bin/node
 
+RUN rm -rf /var/tmp/build
+
 RUN export HOME=/var/tmp/build && \
     npm install -g yarn
 
-RUN rm -rf /var/tmp/build
+ADD flatpak-build-init.sh /usr/bin/flatpak-build-init
